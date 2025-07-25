@@ -61,7 +61,15 @@ RAG (Retrieval Augmented Generation), bir dil modeline (LLM) destekleyici veri s
 3. Bu bilgilerle model, anlamlı ve desteklenmiş bir yanıt üretir.
 
 ---
-##  Başlarken
+## Adımlar:
+
+###  Kurulum
+
+1. `n8n` kurulmalıdır (Docker, desktop app veya bulut sürüm)
+2. Qdrant hesabı oluşturulur ve bir collection tanımlanır
+3. Google Gemini API key alınır ve `n8n` credential kısmında tanımlanır
+
+###  İş Akışlarını n8n'e Aktar
 
 Her branch kendi başına çalışan bağımsız bir workflow içerir. Başlamak için:
 
