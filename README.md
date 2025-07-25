@@ -65,7 +65,7 @@ RAG (Retrieval Augmented Generation), bir dil modeline (LLM) destekleyici veri s
 
 Her branch kendi başına çalışan bağımsız bir workflow içerir. Başlamak için:
 
-1. İlgili branch’e geçin (`pdf-upload-chatbot` veya `drive-integrated-chatbot`).
+1. İlgili branch’e geçin (`main` veya `drive-integrated-chatbot`).
 2. Gerekli `n8n credentials` (Google Drive API, Gemini API, Qdrant API) yapılandırmasını tamamlayın.
 3. Workflow’u n8n’de import ederek çalıştırabilirsiniz.
 
