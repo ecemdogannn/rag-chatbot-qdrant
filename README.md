@@ -1,4 +1,6 @@
-# Rag Chatbot ---
+# Rag Chatbot 
+
+---
 #  RAG (Retrieval Augmented Generation) Chatbot Projeleri
 
 Bu repository, n8n kullanılarak geliştirilmiş iki farklı **RAG tabanlı chatbot** workflow’unu barındırır. Her biri farklı bir veri kaynağı ile çalışır ve ayrı ayrı `branch`lerde konumlandırılmıştır. Her iki sistemde de veriler, vektör formuna getirilerek **Qdrant** vektör veritabanında saklanır. Kullanıcıdan gelen sorulara hem genel bilgi hem de bu özel veriler üzerinden **anlamlı ve bağlama uygun yanıtlar** üretilir.
