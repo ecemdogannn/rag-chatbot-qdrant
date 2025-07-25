@@ -1,4 +1,4 @@
-# Rag Chatbot 
+# Rag Chatbot
 
 #  RAG (Retrieval Augmented Generation) Chatbot Projeleri
 
@@ -44,13 +44,12 @@ Bu branch’te chatbot, doğrudan Google Drive’daki `.txt` uzantılı belgeler
 
 ---
 ##  Kullanılan Teknolojiler
-n8n (Low-code otomasyon platformu)
-LangChain (Belge işleme, embedding, bellek modülleri)
-Qdrant (Vektör veritabanı, semantik arama motoru)
-Google Gemini / PaLM 2.5 (Büyük dil modeli ve embedding motoru)
-Google Drive API (Google Drive’dan dosya alma)
-n8n Forms (Kullanıcının PDF yükleyebildiği form arayüzü)
-
+- n8n (Low-code otomasyon platformu)
+- LangChain (Belge işleme, embedding, bellek modülleri)
+- Qdrant (Vektör veritabanı, semantik arama motoru)
+- Google Gemini / PaLM 2.5 (Büyük dil modeli ve embedding motoru)
+- Google Drive API (Google Drive’dan dosya alma)
+- n8n Forms (Kullanıcının PDF yükleyebildiği form arayüzü)
 
 ---
 ##  RAG Mimarisi Nedir?
@@ -66,7 +65,7 @@ RAG (Retrieval Augmented Generation), bir dil modeline (LLM) destekleyici veri s
 
 Her branch kendi başına çalışan bağımsız bir workflow içerir. Başlamak için:
 
-1. İlgili branch’e geçin (`pdf-upload-chatbot` veya `drive-integrated-chatbot`).
+1. İlgili branch’e geçin (`main` veya `drive-integrated-chatbot`).
 2. Gerekli `n8n credentials` (Google Drive API, Gemini API, Qdrant API) yapılandırmasını tamamlayın.
 3. Workflow’u n8n’de import ederek çalıştırabilirsiniz.
 
