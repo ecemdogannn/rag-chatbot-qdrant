@@ -1,0 +1,456 @@
+{
+  "name": "Rag 2",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "06c90091-376f-4172-85a0-a3499c4050bb",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "8cdc87dd-207f-4e7b-8ea4-1bcef3a4b901",
+      "name": "Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "position": [
+        240,
+        120
+      ],
+      "typeVersion": 1.2,
+      "credentials": {
+        "qdrantApi": {
+          "id": "9e2v7oLkYm4b8WUX",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {}
+      },
+      "id": "5a89538e-2a9c-421a-8c4c-3ea48a4d7c37",
+      "name": "Default Data Loader",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "position": [
+        280,
+        340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "chunkSize": 400,
+        "chunkOverlap": 50,
+        "options": {}
+      },
+      "id": "23533f5b-17d7-47fd-a950-97f2a6d9448c",
+      "name": "Recursive Character Text Splitter",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "position": [
+        200,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Data Ingestion\n**Add data to the semantic database",
+        "height": 700,
+        "width": 840,
+        "color": 3
+      },
+      "id": "3bd37502-dde4-4f71-af45-82a98b12a044",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -260,
+        20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f5d45c29-7f9c-4f46-996a-c5b5301e5840",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        800,
+        100
+      ],
+      "webhookId": "5e56a263-3a40-44bd-bc9d-1cfb3bc2a87d",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful assistant. You have access to a tool to retrieve data from a semantic database to answer questions. Always provide arguments when you execute the tool"
+        }
+      },
+      "id": "8afc5bb0-eea8-4e81-b9ab-308468f6d642",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        1080,
+        100
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {},
+      "id": "a6b05462-a535-4a55-8b1a-2b2cff0053c4",
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        1120,
+        340
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "retriever",
+        "toolDescription": "Retrieve data from a semantic database to answer questions",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "06c90091-376f-4172-85a0-a3499c4050bb",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "4db8981c-11a3-4d8c-b2a0-4a9b151c0d72",
+      "name": "Qdrant Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "position": [
+        1400,
+        360
+      ],
+      "typeVersion": 1.2,
+      "credentials": {
+        "qdrantApi": {
+          "id": "9e2v7oLkYm4b8WUX",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## RAG Chatbot\n**Chat with your data",
+        "height": 700,
+        "width": 1200,
+        "color": 4
+      },
+      "id": "269aa071-52e5-4d11-95cb-75a7d121278b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Bir form gönderildiğinde, bu formdaki ham veriler alınır. Metinler, işlenebilmeleri için yüklenir ve uygun boyutlarda parçalara ayrılır. Bu metin parçaları, Gemini tarafından sağlanan bir model kullanılarak sayısal gömmelere dönüştürülür. Son olarak, bu gömmeler, anlamsal arama ve benzerlik sorguları için Qdrant Vektör Deposu'nda saklanır.\n",
+        "height": 180,
+        "width": 300
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -280,
+        520
+      ],
+      "typeVersion": 1,
+      "id": "bf88eb11-f89a-4837-b02f-e42d959d5040",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "bu bölüm, kullanıcının bir soru sormasıyla başlar. Yapay Zeka Aracısı, bir dil modelini ve konuşma belleğini kullanarak cevabı hazırlar. Cevabı zenginleştirmek için ise, kullanıcının sorusunun sayısal karşılığını (gömme) oluşturur ve bu gömme ile kendi özel veri tabanındaki (Qdrant) bilgileri arayıp bulur. Böylece, bot hem genel bilgilere hem de kendi spesifik verilerinize dayalı, alakalı ve kapsamlı cevaplar verebilir.",
+        "height": 200,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        500
+      ],
+      "typeVersion": 1,
+      "id": "260ee7b9-6c8c-4a42-a20d-b9c09b94db07",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "Bu iki şema bir araya geldiğinde, önce kendi verilerinizi (belgeler, makaleler vb.) vektör formuna dönüştürüp Qdrant'ta depolarsınız (Veri Alımı). Ardından, bu depolanmış verileri kullanan bir sohbet botu (RAG Chatbot) oluşturursunuz. Kullanıcı bir soru sorduğunda, bot soruyu anlar, belleğini kontrol eder ve en önemlisi, Qdrant'tan kendi verilerinizdeki ilgili bilgileri çekerek daha doğru ve bağlama uygun cevaplar üretir.",
+        "height": 200,
+        "width": 440
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        220,
+        760
+      ],
+      "typeVersion": 1,
+      "id": "ec38e6f6-ad38-43fa-9f05-2205c409520f",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        120,
+        340
+      ],
+      "id": "1ddff142-6342-4b5c-9dc2-3617bb946feb",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ZJBJoHoxD6mRPaHL",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        360
+      ],
+      "id": "dbc2b92a-ea70-496c-8c3b-1ae41915f354",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ZJBJoHoxD6mRPaHL",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        580
+      ],
+      "id": "16e736bb-fd3e-4dfc-960b-72e4f09ea7cc",
+      "name": "Embeddings Google Gemini1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ZJBJoHoxD6mRPaHL",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        80,
+        120
+      ],
+      "id": "8788c7d8-de9d-4eac-bab7-c78fb9a1eb68",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZIFPWbXpfe3BPm74",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": ".txt",
+        "returnAll": true,
+        "filter": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -80,
+        80
+      ],
+      "id": "7627c35b-1bad-437b-88de-49c88a674fb4",
+      "name": "Search files and folders",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZIFPWbXpfe3BPm74",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        120
+      ],
+      "id": "10bdb3a1-3e18-4169-ad12-feeaad7b77fe",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "main": [
+        []
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5a5b516d-01db-401f-8c4b-713bc145b223",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "67dd05ad116b91000bfffb00d09e78ca44f2f23172ad1acda823a236e59b7c9c"
+  },
+  "id": "KBTilCrWT98JEWQk",
+  "tags": []
+}
