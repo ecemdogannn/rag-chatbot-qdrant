@@ -1,11 +1,11 @@
 # Rag Chatbot 
-# 🤖 RAG (Retrieval Augmented Generation) Chatbot Projeleri
+
+#  RAG (Retrieval Augmented Generation) Chatbot Projeleri
 
 Bu repository, n8n kullanılarak geliştirilmiş iki farklı **RAG tabanlı chatbot** workflow’unu barındırır. Her biri farklı bir veri kaynağı ile çalışır ve ayrı ayrı `branch`lerde konumlandırılmıştır. Her iki sistemde de veriler, vektör formuna getirilerek **Qdrant** vektör veritabanında saklanır. Kullanıcıdan gelen sorulara hem genel bilgi hem de bu özel veriler üzerinden **anlamlı ve bağlama uygun yanıtlar** üretilir.
 
 ---
-
-## 📂 Branch'ler
+##  Branch'ler
 
 ###  `main`  
 **Form üzerinden PDF yüklemeli RAG Chatbot**
@@ -25,7 +25,6 @@ Bu branch’te kullanıcılar, bir form aracılığıyla PDF dosyaları yükler.
 - Kendi verilerinizle özel chatbot oluşturmak
 
 ---
-
 ###  `drive-integrated-chatbot`  
 **Google Drive entegrasyonlu RAG Chatbot**
 
@@ -44,19 +43,16 @@ Bu branch’te chatbot, doğrudan Google Drive’daki `.txt` uzantılı belgeler
 - Otomatik belge işleme ve semantik analiz
 
 ---
+##  Kullanılan Teknolojiler
+n8n (Low-code otomasyon platformu)
+LangChain (Belge işleme, embedding, bellek modülleri)
+Qdrant (Vektör veritabanı, semantik arama motoru)
+Google Gemini / PaLM 2.5 (Büyük dil modeli ve embedding motoru)
+Google Drive API (Google Drive’dan dosya alma)
+n8n Forms (Kullanıcının PDF yükleyebildiği form arayüzü)
 
-## 🔧 Kullanılan Teknolojiler
-
-| Teknoloji | Açıklama |
-|----------|----------|
-| [n8n](https://n8n.io) | Low-code otomasyon platformu |
-| LangChain | Belge yükleme, embedding, bellek vb. için modüller |
-| [Qdrant](https://qdrant.tech/) | Vektör veritabanı, semantik arama motoru |
-| [Google Gemini (PaLM 2.5)](https://ai.google/discover/gemini/) | LLM ve embedding motoru |
-| Google Drive API | Belgelerin otomatik alınması |
 
 ---
-
 ##  RAG Mimarisi Nedir?
 
 RAG (Retrieval Augmented Generation), bir dil modeline (LLM) destekleyici veri sağlayarak daha doğru ve bağlamsal cevaplar üretmesini sağlar. Bu projelerde RAG şu şekilde işler:
@@ -66,7 +62,6 @@ RAG (Retrieval Augmented Generation), bir dil modeline (LLM) destekleyici veri s
 3. Bu bilgilerle model, anlamlı ve desteklenmiş bir yanıt üretir.
 
 ---
-
 ##  Başlarken
 
 Her branch kendi başına çalışan bağımsız bir workflow içerir. Başlamak için:
@@ -76,14 +71,12 @@ Her branch kendi başına çalışan bağımsız bir workflow içerir. Başlamak
 3. Workflow’u n8n’de import ederek çalıştırabilirsiniz.
 
 ---
-
 ##  Güvenlik
 
 - API anahtarlarınızı kod içerisine yazmayın.
 - n8n’de `Credentials` modülünü kullanarak güvenli anahtar yönetimi sağlayın.
 
 ---
-
 ##  Not
 
 Bu repository, her biri farklı veri kaynağına sahip iki ayrı RAG sistemini göstermek amacıyla oluşturulmuştur. İki sistemin birbirinden izole olabilmesi adına ayrı `branch`lerde geliştirilmişlerdir.
