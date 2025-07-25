@@ -44,13 +44,12 @@ Bu branch’te chatbot, doğrudan Google Drive’daki `.txt` uzantılı belgeler
 
 ---
 ##  Kullanılan Teknolojiler
-. n8n (Low-code otomasyon platformu)
-. LangChain (Belge işleme, embedding, bellek modülleri)
-. Qdrant (Vektör veritabanı, semantik arama motoru)
-. Google Gemini / PaLM 2.5 (Büyük dil modeli ve embedding motoru)
-. Google Drive API (Google Drive’dan dosya alma)
-. n8n Forms (Kullanıcının PDF yükleyebildiği form arayüzü)
-
+- n8n (Low-code otomasyon platformu)
+- LangChain (Belge işleme, embedding, bellek modülleri)
+- Qdrant (Vektör veritabanı, semantik arama motoru)
+- Google Gemini / PaLM 2.5 (Büyük dil modeli ve embedding motoru)
+- Google Drive API (Google Drive’dan dosya alma)
+- n8n Forms (Kullanıcının PDF yükleyebildiği form arayüzü)
 
 ---
 ##  RAG Mimarisi Nedir?
